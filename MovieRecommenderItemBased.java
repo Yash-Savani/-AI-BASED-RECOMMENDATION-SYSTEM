@@ -19,18 +19,14 @@ public class MovieRecommenderItemBased {
             System.out.print("Enter your user ID: ");
             int userID = scanner.nextInt();
 
-            // Load movie titles into a map
             Map<Long, String> movieTitles = loadMovieTitles("src/movie_titles.csv");
 
-            // Load ratings data
             File file = new File("src/movie_ratings.csv");
             DataModel model = new FileDataModel(file);
 
-            // 🔁 Item-based similarity
             ItemSimilarity similarity = new PearsonCorrelationSimilarity(model);
             Recommender recommender = new GenericItemBasedRecommender(model, similarity);
 
-            // Get recommendations
             List<RecommendedItem> recommendations = recommender.recommend(userID, 3);
 
             System.out.println("\nItem-Based Recommendations for user " + userID + ":");
@@ -51,7 +47,6 @@ public class MovieRecommenderItemBased {
         }
     }
 
-    // Helper method to load titles from CSV
     private static Map<Long, String> loadMovieTitles(String filePath) throws IOException {
         Map<Long, String> titles = new HashMap<>();
         BufferedReader br = new BufferedReader(new FileReader(filePath));
