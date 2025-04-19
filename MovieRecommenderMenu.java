@@ -99,10 +99,8 @@ public class MovieRecommenderMenu {
             }
         }
 
-        // Display on console
         System.out.println(output);
 
-        // Export to file
         try (FileWriter writer = new FileWriter("recommendations_user" + userID + ".txt")) {
             writer.write(output.toString());
             System.out.println("Recommendations saved to: recommendations_user" + userID + ".txt");
@@ -127,7 +125,6 @@ public class MovieRecommenderMenu {
         return titles;
     }
 
-    // ✅ Embedded GUI Class
     public static class MovieRecommenderGUI extends JFrame {
 
         private JTextField userIdField;
@@ -144,7 +141,6 @@ public class MovieRecommenderMenu {
             setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             setLayout(new BorderLayout());
 
-            // Top Panel
             JPanel topPanel = new JPanel();
             topPanel.add(new JLabel("Enter User ID: "));
             userIdField = new JTextField(10);
@@ -153,12 +149,10 @@ public class MovieRecommenderMenu {
             topPanel.add(recommendButton);
             add(topPanel, BorderLayout.NORTH);
 
-            // Result Area
             resultArea = new JTextArea();
             resultArea.setEditable(false);
             add(new JScrollPane(resultArea), BorderLayout.CENTER);
 
-            // Button Action
             recommendButton.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     String userIdText = userIdField.getText();
