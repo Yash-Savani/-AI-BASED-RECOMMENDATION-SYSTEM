@@ -21,19 +21,15 @@ public class MovieRecommender {
             System.out.print("Enter your user ID: ");
             int userID = scanner.nextInt();
 
-            // Load movie titles into a map
             Map<Long, String> movieTitles = loadMovieTitles("src/movie_titles.csv");
 
-            // Load ratings data
             File file = new File("src/movie_ratings.csv");
             DataModel model = new FileDataModel(file);
 
-            // User similarity
             UserSimilarity similarity = new PearsonCorrelationSimilarity(model);
             UserNeighborhood neighborhood = new NearestNUserNeighborhood(5, similarity, model);
             Recommender recommender = new GenericUserBasedRecommender(model, neighborhood, similarity);
 
-            // Get recommendations
             List<RecommendedItem> recommendations = recommender.recommend(userID, 3);
 
             System.out.println("\nRecommendations for user " + userID + ":");
@@ -54,7 +50,6 @@ public class MovieRecommender {
         }
     }
 
-    // Helper method to load titles from CSV
     private static Map<Long, String> loadMovieTitles(String filePath) throws IOException {
         Map<Long, String> titles = new HashMap<>();
         BufferedReader br = new BufferedReader(new FileReader(filePath));
