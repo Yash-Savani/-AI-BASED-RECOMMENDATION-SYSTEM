@@ -29,7 +29,6 @@ public class MovieRecommenderGUI extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
-        // Top Panel
         JPanel topPanel = new JPanel();
         topPanel.add(new JLabel("Enter User ID: "));
         userIdField = new JTextField(10);
@@ -38,19 +37,16 @@ public class MovieRecommenderGUI extends JFrame {
         topPanel.add(recommendButton);
         add(topPanel, BorderLayout.NORTH);
 
-        // Result Area
         resultArea = new JTextArea();
         resultArea.setEditable(false);
         add(new JScrollPane(resultArea), BorderLayout.CENTER);
 
-        // Load movie titles once
         try {
             movieTitles = loadMovieTitles("src/movie_titles.csv");
         } catch (IOException e) {
             resultArea.setText("Error loading movie titles.");
         }
 
-        // Button Action
         recommendButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String userIdText = userIdField.getText();
@@ -70,7 +66,6 @@ public class MovieRecommenderGUI extends JFrame {
             File file = new File("src/movie_ratings.csv");
             DataModel model = new FileDataModel(file);
 
-            // ✅ Use item-based similarity instead of user-based
             ItemSimilarity itemSimilarity = new PearsonCorrelationSimilarity(model);
             GenericItemBasedRecommender recommender = new GenericItemBasedRecommender(model, itemSimilarity);
 
