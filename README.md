@@ -75,5 +75,6 @@ This Movie Recommendation System has several potential real-world applications:
 
 Task 4 was an essential step in applying machine learning techniques, specifically **collaborative filtering**, to real-world recommendation systems. The combination of **Apache Mahout** and a user-friendly **GUI** makes this movie recommendation system an effective tool for predicting user preferences. The task not only demonstrates the power of machine learning in recommendation systems but also showcases how to integrate **data models**, **similarity metrics**, and **recommendation algorithms** into a functional application.
 
-In future iterations, features like **user authentication**, **real-time recommendations**, and **more advanced filtering techniques** can be added to enhance the functionality and user experience further.
 
+![Image](https://github.com/user-attachments/assets/bc7486e8-1f3e-4bd6-80c9-52932cc839ab)
+![Image](https://github.com/user-attachments/assets/d58e5e45-5d22-4f0b-8f07-6fe79c1dca4f)
